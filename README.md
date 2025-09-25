@@ -10,38 +10,41 @@ Aquí recopilo apuntes, prácticas y proyectos de las distintas asignaturas del 
 ### 🔹 Desarrollo web en entorno cliente
 - Programación en **JavaScript**, manipulación del DOM y uso de librerías modernas.
 - Prácticas y proyectos relacionados con la lógica en el lado del cliente.  
-👉 [Ver proyectos](./cliente)
+👉 [Ver](./cliente)
+👉 [Ver Actividades](./cliente/actividades)
 
 ---
 
 ### 🔹 Desarrollo web en entorno servidor
 - Trabajo con **PHP**, **Java** u otros entornos de servidor.
 - Conexión con bases de datos y gestión de usuarios.  
-👉 [Ver proyectos](./servidor)
+👉 [Ver](./servidor)
+👉 [Ver Informes](./servidor/informes)
 
 ---
 
 ### 🔹 Diseño de interfaces web
 - Creación de interfaces accesibles, usables y responsive con **HTML5**, **CSS3** y **frameworks**.  
-👉 [Ver proyectos](./interfaces)
+👉 [Ver](./interfaces)
 
 ---
 
 ### 🔹 Ciberseguridad
 - Principios de seguridad informática, criptografía, auditorías básicas y protección de aplicaciones web.  
-👉 [Ver apuntes](./ciberseguridad)
+👉 [Ver](./ciberseguridad)
 
 ---
 
 ### 🔹 Despliegue de aplicaciones web
 - Configuración de servidores, **Docker**, automatización y despliegue en la nube.  
-👉 [Ver prácticas](./despliegue)
+👉 [Ver](./despliegue)
+👉 [Ver Informes](./despliegue/informes)
 
 ---
 
 ### 🔹 Sostenibilidad aplicada al sistema productivo
 - Aplicación de principios de sostenibilidad al desarrollo y ciclo de vida de software.  
-👉 [Ver materiales](./sostenibilidad)
+👉 [Ver](./sostenibilidad)
 
 ---
 
