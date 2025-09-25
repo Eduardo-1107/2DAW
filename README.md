@@ -11,7 +11,7 @@ Aquí recopilo apuntes, prácticas y proyectos de las distintas asignaturas del 
 - Programación en **JavaScript**, manipulación del DOM y uso de librerías modernas.
 - Prácticas y proyectos relacionados con la lógica en el lado del cliente.  
 👉 [Ver](./cliente)
-👉 [Ver Actividades](./cliente/actividades)
+👉 [Ver Actividades](./cliente/Actividades)
 
 ---
 
