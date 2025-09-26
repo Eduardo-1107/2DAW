@@ -20,6 +20,7 @@ Aquí recopilo apuntes, prácticas y proyectos de las distintas asignaturas del 
 - Conexión con bases de datos y gestión de usuarios.  
 👉 [Ver](./servidor)
 👉 [Ver Informes](./servidor/informes)
+👉 [Ver Actividades](./servidor/actividades)
 
 ---
 
