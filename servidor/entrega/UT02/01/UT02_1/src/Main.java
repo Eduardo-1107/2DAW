@@ -1,13 +1,11 @@
-import javax.print.attribute.standard.RequestingUserName;
 import java.util.ArrayList;
 import java.util.Scanner;
-// Disclaimer: La nota no la controlo porque no sé que reglas pueden haber. Si la nota es negativa o sobre 100 por ejemplo.
 public class Main {
     static void main() {
-        int flag = 0, edad = 0;
-        double notaMedia = 0, suma = 0, mediaTotal = 0, mejorCalificacion = Double.MIN_VALUE;
-        String nombre = "";
-        boolean esMatriculado = false, encontrado;
+        int flag, edad;
+        double notaMedia, suma, mediaTotal, mejorCalificacion;
+        String nombre;
+        boolean esMatriculado, encontrado;
         ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
 
         do {
@@ -26,7 +24,7 @@ public class Main {
                     } while (edad <= 0);
                     do {
                         notaMedia = Funciones.pedirNumeroDouble("Introduce Nota Media: ");
-                        if (notaMedia < 0)
+                        if (notaMedia < 0 || notaMedia > 10)
                             System.out.println(">> Nota media no puede ser inferior a 0. Vuelve a intentarlo");
                     } while (notaMedia < 0);
                     esMatriculado = Funciones.pedirBoolean("¿Está matriculado? (true/false): ");
@@ -49,9 +47,9 @@ public class Main {
                 case 3:
                     encontrado = false;
                     if (!listaEstudiantes.isEmpty()) {
-                        nombre = Funciones.pedirTexto("\nIntroduce nombre: ");
+                        nombre = Funciones.pedirTexto("\nIntroduce nombre: ").toLowerCase();
                         for (Estudiante estudiante : listaEstudiantes) {
-                            if (estudiante.getNombre().contains(nombre)||estudiante.getNombre().toLowerCase().contains(nombre) || estudiante.getNombre().toUpperCase().contains(nombre)) {
+                            if (estudiante.getNombre().toLowerCase().contains(nombre)) {
                                 System.out.printf("%nEstudiante encontrado%n" +
                                         "> Nombre: %s%n" +
                                         "> Edad: %s%n" +
@@ -67,7 +65,7 @@ public class Main {
                     break;
 
                 case 4:
-
+                    suma = 0;
                     if (!listaEstudiantes.isEmpty()) {
                         for (Estudiante estudiante : listaEstudiantes) {
                             suma += estudiante.getNotaMedia();
@@ -79,6 +77,7 @@ public class Main {
                     break;
 
                 case 5:
+                    mejorCalificacion = Double.MIN_VALUE;
                     if (!listaEstudiantes.isEmpty()) {
                         for (Estudiante estudiante : listaEstudiantes)
                             if (estudiante.getNotaMedia() > mejorCalificacion)
@@ -172,7 +171,7 @@ public class Main {
         }
         public static String pedirTexto(String msg) {
             Scanner sc = new Scanner(System.in);
-            String txt = "";
+            String txt;
             do {
                 System.out.print(msg);
                 txt = sc.nextLine();

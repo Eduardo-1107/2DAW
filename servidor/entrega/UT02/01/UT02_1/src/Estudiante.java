@@ -25,13 +25,19 @@ public class Estudiante {
         return this.esMatriculado;
      }
      public void setNombre(String nombre) {
+        if (nombre.isEmpty())
+            throw new IllegalArgumentException("El nombre no puede estar vacío");
         this.nombre = nombre;
      }
      public void setEdad(int edad) {
-        this.edad = edad;
+         if (edad <= 0)
+             throw new IllegalArgumentException("La edad debe ser positiva");
+         this.edad = edad;
      }
      public void setNotaMedia(double notaMedia) {
-        this.notaMedia = notaMedia;
+         if (notaMedia < 0 || notaMedia > 10)
+             throw new IllegalArgumentException("La nota debe estar entre 0 y 10");
+         this.notaMedia = notaMedia;
      }
      public void setEsMatriculado(boolean esMatriculado) {
         this.esMatriculado = esMatriculado;
