@@ -1,0 +1,14 @@
+
+body > div {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 1em;
+
+}
+
+div div {
+    background-color: lavender;
+    padding: 20px;
+    margin: 5px;
+}

@@ -1,0 +1,18 @@
+body > div {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    border: 1px solid black;
+    width: auto;
+    --height: 300px;
+}
+
+.diferente {
+    order: -1;
+}
+
+div div {
+    background-color: lavender;
+    padding: 20px;
+    margin: 5px;
+}

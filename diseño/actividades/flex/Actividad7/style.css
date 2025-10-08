@@ -1,0 +1,14 @@
+body > div {
+    display: flex;
+    border: 1px solid black;
+    width: auto;
+    --height: 300px;
+}
+.diferente {
+    flex-grow: 2;
+}
+div div {
+    background-color: lavender;
+    padding: 20px;
+    margin: 5px;
+}

@@ -1,0 +1,12 @@
+body > div {
+    display: flex;
+    border: 1px solid black;
+    justify-content: flex-end;
+    width: auto;
+    --height: 300px;
+}
+div div {
+    background-color: lavender;
+    padding: 20px;
+    margin: 5px;
+}

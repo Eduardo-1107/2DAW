@@ -1,0 +1,16 @@
+body > div {
+    display: flex;
+    border: 1px solid black;
+
+    align-items: center;
+    width: auto;
+    height: 300px;
+}
+.diferente {
+    height: 150px;
+}
+div div {
+    background-color: lavender;
+    padding: 20px;
+    margin: 5px;
+}
