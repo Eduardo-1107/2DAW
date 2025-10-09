@@ -15,25 +15,51 @@ public class Main {
             switch (flag) {
 
                 case 1:
-
-                    nombre = Funciones.pedirTexto("\nIntroduce nombre: ");
+                    Estudiante est = new Estudiante();
                     do {
-                        edad = Funciones.pedirNumeroInt("Introduce edad: ");
-                        if (edad <= 0)
-                            System.out.println(">> Edad no puede ser igual o inferior a 0. Vuelve a intentarlo");
-                    } while (edad <= 0);
+                        try {
+                            nombre = Funciones.pedirTexto("\nIntroduce nombre:");
+                            est.setNombre(nombre);
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println(">> Nombre inválido, inténtelo de nuevo");
+                        }
+                    } while (true);
                     do {
-                        notaMedia = Funciones.pedirNumeroDouble("Introduce Nota Media: ");
-                        if (notaMedia < 0 || notaMedia > 10)
-                            System.out.println(">> Nota media no puede ser inferior a 0. Vuelve a intentarlo");
-                    } while (notaMedia < 0);
-                    esMatriculado = Funciones.pedirBoolean("¿Está matriculado? (true/false): ");
-                    listaEstudiantes.add(new Estudiante(nombre,edad,notaMedia,esMatriculado));
-                    System.out.println("\n> Estudiante añadido correctamente\n");
+                        try {
+                            edad = Funciones.pedirNumeroInt("\nIntroduce edad: ");
+                            est.setEdad(edad);
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println(">> Edad inválida, el valor debe ser superior a 0");
+                        }
+                    } while (true);
+                    do {
+                        try {
+                            notaMedia = Funciones.pedirNumeroDouble("\nIntroduce nota media: ");
+                            est.setNotaMedia(notaMedia);
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println(">> Nota Media inválida, inténtelo de nuevo");
+                        }
+                    } while (true);
+                    do {
+                        try {
+                            esMatriculado = Funciones.pedirBoolean("\n¿Está matriculado? (true/false): ");
+                            est.setEsMatriculado(esMatriculado);
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println(">> Respuesta inválida, inténtelo de nuevo");
+                        }
+                    } while (true);
+                    try {
+                        listaEstudiantes.add(est);
+                        System.out.println("\n> Estudiante agregado correctamente\n");
+                    } catch (Exception e) {
+                        System.out.println("\n>> Estudiante NO agregado.");
+                    }
                     break;
-
                 case 2:
-
                     System.out.println("\n=== Lista de Estudiantes ===");
                     if (listaEstudiantes.isEmpty())
                         System.out.println(">> No hay nigún alumno en la lista");
@@ -43,7 +69,6 @@ public class Main {
                         }
                     System.out.printf("%n");
                     break;
-
                 case 3:
                     encontrado = false;
                     if (!listaEstudiantes.isEmpty()) {
@@ -157,7 +182,7 @@ public class Main {
 
             while (!valido) {
                 System.out.print(msg);
-                    respuesta = sc.nextLine();
+                respuesta = sc.nextLine();
                 if (respuesta.equalsIgnoreCase("true")) { // no es Case Sensitive
                     valido = true;
                     b = true;

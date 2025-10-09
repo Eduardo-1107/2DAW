@@ -24,17 +24,17 @@ public class Estudiante {
      public boolean getEsMatriculado() {
         return this.esMatriculado;
      }
-     public void setNombre(String nombre) {
+     public void setNombre(String nombre) throws IllegalArgumentException{
         if (nombre.isEmpty())
             throw new IllegalArgumentException("El nombre no puede estar vacío");
         this.nombre = nombre;
      }
-     public void setEdad(int edad) {
+     public void setEdad(int edad) throws IllegalArgumentException{
          if (edad <= 0)
              throw new IllegalArgumentException("La edad debe ser positiva");
          this.edad = edad;
      }
-     public void setNotaMedia(double notaMedia) {
+     public void setNotaMedia(double notaMedia) throws IllegalArgumentException{
          if (notaMedia < 0 || notaMedia > 10)
              throw new IllegalArgumentException("La nota debe estar entre 0 y 10");
          this.notaMedia = notaMedia;
