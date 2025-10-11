@@ -1,10 +1,10 @@
-package example.cifp.holamundo;
+package com.cifp.HolaMundo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HolamundoApplicationTests {
+class HolaMundoApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Felicidades</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <div th:replace="~{fragments/menu::menu}"></div>
+    <div class="container mt-5">
+        <h1 class="mb-4">Hoy el usuario con ID: <span th:text="${id}">0</span> cumple <span th:text="${edad}"></span> años</h1>
+        <ul class="list-group">
+            <div th:if="${edad > 0}" class="row col-2">
+                <li th:each="i : ${#numbers.sequence(1,edad)}" class="list-group-item">
+                    <a class="btn btn-primary w-100" href="/">Felicidades <span th:text="${nombre}"></span></a>
+                </li>
+            </div>
+        </ul>
+        <div th:if="${edad == 0}" class="alert alert-warning text-center mt-4">
+            <p>No hay felicitaciones disponibles porque la edad es 0</p>
+        </div>
+    </div>
+</body>
+</html>
