@@ -26,7 +26,7 @@ import java.util.ArrayList;
             model.addAttribute("msg", "Hoy el usuario con ID: " + id + " cumple " + edad + " años.");
 
             for (int i = 0; i < edad; i++)
-                felicitaciones.add("Felicidades" + nombre);
+                felicitaciones.add("Felicidades " + nombre);
 
             model.addAttribute("felicitaciones", felicitaciones);
 
