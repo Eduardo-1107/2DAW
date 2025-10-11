@@ -10,9 +10,7 @@
     <div class="container mt-5">
         <h1 class="mb-4">Hoy el usuario con ID: <span th:text="${id}">0</span> cumple <span th:text="${edad}"></span> años</h1>
         <div th:if="${edad > 0}" class="d-flex flex-wrap gap-2">
-            <a th:each="i : ${#numbers.sequence(1, edad)}" class="btn btn-primary w-5 flex-fill" th:href="@{/}">
-                Felicidades <span th:text="${nombre}">Amigo</span>
-            </a>
+            <a th:each="felicitacion : ${felicitaciones}" class="btn btn-primary w-5 flex-fill" th:text="${felicitacion}" th:href="@{/}"></a>
         </div>
         <div th:if="${edad == 0}" class="alert alert-warning text-center mt-4">
             <p>No hay felicitaciones disponibles porque la edad es 0</p>
