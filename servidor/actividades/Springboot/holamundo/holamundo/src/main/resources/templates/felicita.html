@@ -9,12 +9,10 @@
     <div th:replace="~{fragments/menu::menu}"></div>
     <div class="container mt-5">
         <h1 class="mb-4">Hoy el usuario con ID: <span th:text="${id}">0</span> cumple <span th:text="${edad}"></span> años</h1>
-        <ul class="list-group">
-            <div th:if="${edad > 0}" class="row col-2">
-                <li th:each="i : ${#numbers.sequence(1,edad)}" class="list-group-item">
-                    <a class="btn btn-primary w-100" href="/">Felicidades <span th:text="${nombre}"></span></a>
+        <ul th:if="${edad > 0}" class="list-group list-group-horizontal">
+                <li class="list-group-item ">
+                    <a th:each="i : ${#numbers.sequence(1,edad)}" class="btn btn-primary mx-2 my-2" th:href="@{/}">Felicidades <span th:text="${nombre}"></span></a>
                 </li>
-            </div>
         </ul>
         <div th:if="${edad == 0}" class="alert alert-warning text-center mt-4">
             <p>No hay felicitaciones disponibles porque la edad es 0</p>
