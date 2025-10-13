@@ -21,14 +21,9 @@ import java.util.ArrayList;
         }
         @GetMapping({"/felicita/{id}","/felicita"})
         public String felicita(@PathVariable(required = false) String id, @RequestParam(defaultValue = "Amigo") String nombre, @RequestParam(defaultValue = "0") int edad, Model model ) {
-            ArrayList<String> felicitaciones = new ArrayList<>();
             model.addAttribute("edad" ,edad);
-            model.addAttribute("msg", "Hoy el usuario con ID: " + id + " cumple " + edad + " años.");
-
-            for (int i = 0; i < edad; i++)
-                felicitaciones.add("Felicidades " + nombre);
-
-            model.addAttribute("felicitaciones", felicitaciones);
+            model.addAttribute("nombre", nombre);
+            model.addAttribute("id", id);
 
             return "felicita";
         }
