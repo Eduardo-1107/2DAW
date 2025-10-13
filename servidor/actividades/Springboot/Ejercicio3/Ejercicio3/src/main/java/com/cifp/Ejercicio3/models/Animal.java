@@ -32,11 +32,18 @@ public class Animal {
     public void setId(int id) {
         this.id = id;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws IllegalArgumentException {
+        nombre = nombre.trim();
+        if (nombre.length() >= 3 && nombre.length() <= 15)
+            this.nombre = nombre;
+        else
+            throw new IllegalArgumentException("El mínimo de carácteres debe ser 3 y el máximo 15.");
     }
-    public void setVidaMedia(int vidaMedia) {
-        this.vidaMedia = vidaMedia;
+    public void setVidaMedia(int vidaMedia) throws IllegalArgumentException {
+        if (vidaMedia >= 0 && vidaMedia <= 600)
+            this.vidaMedia = vidaMedia;
+        else
+            throw new IllegalArgumentException("La edad media debe estar entre 0 y 600");
     }
     public void setEsExtinto(boolean esExtinto) {
         this.esExtinto = esExtinto;
