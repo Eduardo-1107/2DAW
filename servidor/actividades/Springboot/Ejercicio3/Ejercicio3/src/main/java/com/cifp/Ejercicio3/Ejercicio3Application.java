@@ -1,11 +1,13 @@
-package com.cifp.HolaMundo;
+package com.cifp.Ejercicio3;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HolaMundoApplication {
+public class Ejercicio3Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HolaMundoApplication.class, args);
+		SpringApplication.run(Ejercicio3Application.class, args);
 	}
+
 }
