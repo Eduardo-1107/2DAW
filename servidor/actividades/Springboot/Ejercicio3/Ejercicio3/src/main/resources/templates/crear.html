@@ -10,7 +10,7 @@
     <div class="container mt-5">
         <div class="mx-auto">
             <h1 class="my-5">Crear Nuevo animal</h1>
-            <form action="#" method="post" th:action="@{/crear}" th:object="${animal}">
+            <form action="#" method="post" th:action="@{/animales/crear}" th:object="${animal}">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="nombre" th:field="*{nombre}">
@@ -28,7 +28,7 @@
                 </div>
                 <button type="submit" class="btn btn-success btn-sm" value="Crear">Crear</button>
             </form>
-            <a class="btn btn-secondary btn-sm my-3" th:href="@{/}" role="button">Volver a la lista</a>
+            <a class="btn btn-secondary btn-sm my-3" th:href="@{/animales}" role="button">Volver a la lista</a>
         </div>
     </div>
 </body>

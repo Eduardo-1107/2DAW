@@ -9,7 +9,7 @@
         <div th:replace="~{fragments/fragments::menu}"></div>
         <div class="container">
             <h1 class="mt-5">Listado Animales</h1>
-            <a class="btn btn-primary mt-5" aria-current="page" th:href="@{/crear}">Crear Nuevo Animal</a>
+            <a class="btn btn-primary mt-5" aria-current="page" th:href="@{/animales/crear}">Crear Nuevo Animal</a>
             <table class="table mt-5">
                 <thead>
                     <tr>
@@ -20,12 +20,17 @@
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
-                <tbody th:unless="${animales == null or #lists.isEmpty(animales)}">
+                <tbody>
                     <tr  th:each="animal : ${animales}">
                         <td th:text="${animal.getId()}"></td>
                         <td th:text="${animal.getNombre()}"></td>
                         <td th:text="${animal.getVidaMedia()}"></td>
                         <td th:text="${animal.getEsExtinto() ? 'Si' : 'No'}"></td>
+                        <td>
+                            <a th:href="@{/animales/detalles/{id}(id = ${animal.getId()})}" class="btn btn-outline-success">Detalles</a>
+                            <a class="btn btn-outline-warning">Editar</a>
+                            <a class="btn btn-outline-danger">Eliminar</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

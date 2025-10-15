@@ -4,7 +4,7 @@ import jakarta.validation.constraints.*;
 
 public class Animal {
 
-    private int id;
+    private Integer id;
 
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 3, max = 15, message = "La longitud debe de estar entre 3 y 15")
@@ -20,14 +20,14 @@ public class Animal {
 
     public Animal() {};
 
-    public Animal(int id, String nombre, Integer vidaMedia, boolean esExtinto) {
+    public Animal(Integer id, String nombre, Integer vidaMedia, boolean esExtinto) {
         setId(id);
         setNombre(nombre);
         setVidaMedia(vidaMedia);
         setEsExtinto(esExtinto);
     }
 
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     public String getNombre() {
@@ -40,7 +40,7 @@ public class Animal {
         return this.esExtinto;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public void setNombre(String nombre)  {
@@ -50,7 +50,7 @@ public class Animal {
         //else
         //    throw new IllegalArgumentException("El mínimo de carácteres debe ser 3 y el máximo 15.");
     }
-    public void setVidaMedia(int vidaMedia)  {
+    public void setVidaMedia(Integer vidaMedia)  {
         //if (vidaMedia >= 0 && vidaMedia <= 600)
             this.vidaMedia = vidaMedia;
         //else
