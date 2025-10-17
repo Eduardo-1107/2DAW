@@ -2,7 +2,7 @@ package com.cifp.Ejercicio4.services;
 
 import com.cifp.Ejercicio4.interfaces.IAnimalService;
 import com.cifp.Ejercicio4.models.Animal;
-import com.cifp.Ejercicio4.repositories.AnimalRepository;
+import com.cifp.Ejercicio4.repositories.IAnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
 public class AnimalService2 implements IAnimalService {
 
     @Autowired
-    AnimalRepository animalRepository;
+    IAnimalRepository animalRepository;
 
     public List<Animal> getAnimales() {
         return animalRepository.findAll();
