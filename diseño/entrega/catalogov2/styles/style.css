@@ -1,0 +1,125 @@
+/* Plantilla de colores 
+    Crema claro	            Fondo principal	#FFF8E7
+    Beige suave	            Fondo secundario / tarjetas	#F5E6CA
+    Arena cálida	        Detalles o hover	#E6D0B1
+    Marrón claro	        Texto principal o títulos	#5A4634
+    Blanco roto	            Áreas de contraste / fondos interiores	#FAF9F6
+    Dorado suave (opcional)	Botones o detalles de lujo	#C6A664
+*/
+
+/* Estilos generales */
+body {
+    width: 90%;          
+    margin: 0 auto;
+    display: grid;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #FFF8E7 ;
+    grid-template-areas: 
+    "h h h h"
+    "n n n n"
+    "a m m m"
+    "f f f f"
+    ;
+}
+
+
+/* Estilo de del header */
+
+header {
+    grid-area: h;
+    display: flex;
+    border: 3px dotted rgb(141, 209, 232);
+}
+h1 {
+    padding: 10px;
+    align-content: center;
+    width: 100%;
+    text-align: left;
+    color: #5A4634;
+    
+}
+
+
+/* Estilos del nav  */
+
+nav {
+    grid-area:n;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 3px dotted green;
+    
+}
+a {
+    margin: 1em;
+    color: #C6A664;
+    text-decoration: none;
+}
+
+/* Estilos del main  */
+
+main {
+    grid-area: m;
+    border: 3px dotted red;
+}
+.menu-rapido {
+    display: flex;
+    justify-content: space-evenly;
+    border: 3px dotted rgb(0, 217, 255);
+}
+main > h2 {
+    border: 3px dotted rgb(71, 67, 20);
+    margin: 0;
+    
+}
+
+main > section {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 3px dotted rgb(255, 0, 153);
+}
+
+/* Estilos Articulos  */
+
+article {
+    display:  grid;
+    border: 3px dotted rgb(0, 42, 255);
+    margin: 1em;
+}
+
+article > img {
+    width:   100%;
+    height:  13em;
+
+}
+article > h3 {
+    margin-bottom: 0;
+}
+
+
+/* Estilos del aside */
+
+aside {
+    grid-area: a;
+    order: -1;
+    border: 3px dotted purple;
+}
+
+/* Estilos del footer */
+
+footer {
+    background-color: #d0d0d0;
+    grid-area: f;
+    border: 3px dotted orange;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+footer > p {
+    text-align: center;
+}
