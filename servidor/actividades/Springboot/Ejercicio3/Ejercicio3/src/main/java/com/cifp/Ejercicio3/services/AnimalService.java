@@ -1,6 +1,7 @@
 package com.cifp.Ejercicio3.services;
 
 import com.cifp.Ejercicio3.models.Animal;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,4 +31,13 @@ public class AnimalService {
         animales.add(animal);
     }
 
+    public void ActualizarAnimal(Animal animal) {
+        for (Animal a : animales) {
+            if (a.getId().equals(animal.getId())) {
+                a.setNombre(animal.getNombre());
+                a.setVidaMedia(animal.getVidaMedia());
+                a.setEsExtinto(animal.getEsExtinto());
+            }
+        }
+    }
 }

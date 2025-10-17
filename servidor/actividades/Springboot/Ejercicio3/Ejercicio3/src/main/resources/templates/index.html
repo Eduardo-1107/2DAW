@@ -28,7 +28,7 @@
                         <td th:text="${animal.getEsExtinto() ? 'Si' : 'No'}"></td>
                         <td>
                             <a th:href="@{/animales/detalles/{id}(id = ${animal.getId()})}" class="btn btn-outline-success">Detalles</a>
-                            <a class="btn btn-outline-warning">Editar</a>
+                            <a th:href="@{/animales/editar/{id}(id = ${animal.getId()})}" class="btn btn-outline-warning">Editar</a>
                             <a class="btn btn-outline-danger">Eliminar</a>
                         </td>
                     </tr>
