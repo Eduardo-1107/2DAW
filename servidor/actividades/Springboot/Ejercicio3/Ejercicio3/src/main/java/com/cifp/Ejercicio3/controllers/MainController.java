@@ -48,8 +48,18 @@ public class MainController {
         if (bindingResult.hasErrors()) {
             return "editar";
         } else {
-            animalService.ActualizarAnimal(animal);
+            animalService.actualizarAnimal(animal);
             return "redirect:/animales";
         }
+    }
+    @GetMapping("/eliminar/{id}")
+    public String eliminarAnimal(@PathVariable Integer id, Model model) {
+        model.addAttribute("animal", animalService.getAnimalById(id));
+        return "eliminar";
+    }
+    @PostMapping("/eliminar/{id}")
+    public String eliminarAnimal(@PathVariable Integer id) {
+        animalService.eliminarAnimal(animalService.getAnimalById(id));
+        return "redirect:/animales";
     }
 }

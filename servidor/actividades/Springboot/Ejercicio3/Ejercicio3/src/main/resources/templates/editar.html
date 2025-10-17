@@ -27,7 +27,7 @@
                 <label class="form-check-label" for="esExtinto">¿Está extinto?</label>
                 <div class="text-danger mt-1" th:if="${#fields.hasErrors('esExtinto')}" th:errors="*{esExtinto}"></div>
             </div>
-            <button type="submit" class="btn btn-success btn-sm" value="Crear">Actualizar</button>
+            <button type="submit" class="btn btn-success btn-sm" value="Editar">Actualizar</button>
         </form>
         <a class="btn btn-secondary btn-sm my-3" th:href="@{/animales}" role="button">Volver a la lista</a>
     </div>
