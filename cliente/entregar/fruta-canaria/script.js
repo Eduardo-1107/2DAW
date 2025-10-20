@@ -24,11 +24,32 @@ function insertar(){
   }
 }
 function validarDatos(fruta,codigoIsla,precio,kilos,idInsertarDespues){
-  if (fruta==""){
-    mostrarError("Debe introducir un nombre de fruta")
+  try {
+    if (!fruta || fruta.trim() === "") {
+      throw new Error("Debe introducir un nombre de fruta");
+    }
+
+    if (codigoIsla) {
+      throw new Error("Debe introducir un código de isla válido");
+    }
+
+    if (isNaN(precio) || precio <= 0) {
+      throw new Error("El precio debe ser un número mayor que 0");
+    }
+
+    if (isNaN(kilos) || kilos <= 0) {
+      throw new Error("Los kilos deben ser un número mayor que 0");
+    }
+
+    if (idInsertarDespues !== null && idInsertarDespues !== undefined && isNaN(idInsertarDespues)) {
+      throw new Error("El ID debe ser un número válido");
+    }
+    return true;
+
+  } catch (e) {
+    mostrarError(e.message);
     return false;
   }
-  return true
 }
 function mostrarError(msgError){
    let error = document.getElementById("error");
