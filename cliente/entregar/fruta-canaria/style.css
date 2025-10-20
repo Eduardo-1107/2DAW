@@ -1,0 +1,19 @@
+div {
+  padding: 2px;
+}
+
+#tabla-frutas {
+  border: 1px solid black;
+}
+
+#error {
+  color: red;
+}
+table{
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+table,th,td{
+  border:1px solid black;
+}
