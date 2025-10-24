@@ -43,7 +43,6 @@ public class AnimalService1 implements IAnimalService {
         }
     }
 
-
     public void deleteAnimal(Animal animal) {
         animales.removeIf(a -> a.getId().equals(animal.getId()));
     }

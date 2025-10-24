@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 
+import java.util.Objects;
+
 
 @Entity
 public class Animal {
@@ -33,6 +35,11 @@ public class Animal {
         setVidaMedia(vidaMedia);
         setEsExtinto(esExtinto);
     }
+    public Animal(String nombre, Integer vidaMedia, boolean esExtinto) {
+        setNombre(nombre);
+        setVidaMedia(vidaMedia);
+        setEsExtinto(esExtinto);
+    }
 
     public Integer getId() {
         return this.id;
@@ -51,21 +58,25 @@ public class Animal {
         this.id = id;
     }
     public void setNombre(String nombre)  {
-        //nombre = nombre.trim();
-        //if (nombre.length() >= 3 && nombre.length() <= 15)
         this.nombre = nombre;
-        //else
-        //    throw new IllegalArgumentException("El mínimo de carácteres debe ser 3 y el máximo 15.");
     }
     public void setVidaMedia(Integer vidaMedia)  {
-        //if (vidaMedia >= 0 && vidaMedia <= 600)
         this.vidaMedia = vidaMedia;
-        //else
-        //    throw new IllegalArgumentException("La edad media debe estar entre 0 y 600");
     }
     public void setEsExtinto(boolean esExtinto) {
         this.esExtinto = esExtinto;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return esExtinto == animal.esExtinto && Objects.equals(id, animal.id) && Objects.equals(nombre, animal.nombre) && Objects.equals(vidaMedia, animal.vidaMedia);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre, vidaMedia, esExtinto);
+    }
 }
 
