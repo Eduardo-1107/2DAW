@@ -1,6 +1,15 @@
-const frutas = [{id: 1, fruta: "Aguacate", codigoIslaProcedencia: "GO", precioKiloEuros: 5.50, kilos: 10},
-                {id: 2, fruta: "Plátano", codigoIslaProcedencia: "LP", precioKiloEuros: 2.30, kilos: 15},
-]
+
+
+function Fruta() {}
+
+function Fruta(id,fruta,codigoIslaProcedencia,precioKiloEuros,kilos) {
+  this.id = id
+  this.fruta = fruta
+  this.codigoIslaProcedencia = codigoIslaProcedencia
+  this.precioKiloEuros = precioKiloEuros
+  this.kilos = kilos
+}
+const frutas = [ new Fruta(1, "Aguacate", "GO", 5.50, 10), new Fruta(2,"Plátano", "LP", 2.30, 15)]
 const idiomas = [{codigo: "es", idioma: "Español"},{codigo: "en", idioma: "Inglés"}];
 const islas = [ {codigo: "GO", isla: "La Gomera"}, 
                 {codigo: "LP", isla: "La Palma"},
@@ -11,14 +20,13 @@ const islas = [ {codigo: "GO", isla: "La Gomera"},
                 {codigo: "LZ", isla: "Lanzarote"},
                 {codigo: "LG", isla: "La Graciosa"}
               ]
-
 function insertar(){
   let fruta =document.getElementById("fruta").value;
   let codigoIsla =document.getElementById("islas").value;
   let precio =document.getElementById("precio").value;
   let kilos =document.getElementById("kilos").value;
   let idInsertarDespues =document.getElementById("id-insertar-despues").value;
-  let nuevaFruta={};
+  let nuevaFruta= new Fruta();
   if (validarDatos(fruta,codigoIsla,precio,kilos,idInsertarDespues)){
     nuevaFruta.id = siguienteId()
     nuevaFruta.fruta = fruta;
@@ -68,12 +76,6 @@ function validarDatos(fruta,codigoIsla,precio,kilos,idInsertarDespues){
 function mostrarError(msgError){
    let error = document.getElementById("error");
    error.innerHTML = `<span>${msgError}</span>`
-}
-function iniciar(){
-  cargarIdiomas()
-  mostrarFrutas()
-  cargarIslas()
-  mostrarFechaHora("es")
 }
 function mostrarFrutas(){
   let idioma = document.getElementById("select-idiomas").value;
@@ -201,3 +203,23 @@ function formatearImporte(importe, idioma) {
     currency: idioma === "en" ? "GBP" : "EUR"
   }).format(importe);
 }
+
+function cargarFrutas() {
+  const frutasStorage = localStorage.getItem("frutas");
+
+  if (frutasStorage) {
+    const frutasRecuperadas = JSON.parse(frutasStorage);
+    frutas.length = 0; 
+    frutas.push(...frutasRecuperadas); 
+  } else {
+    almacenarSet();
+  }
+}
+
+(function () {
+  cargarIdiomas()
+  mostrarFrutas()
+  cargarIslas()
+  cargarFrutas()
+  mostrarFechaHora("es")
+})(); 

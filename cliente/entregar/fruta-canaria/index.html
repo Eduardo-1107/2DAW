@@ -6,10 +6,9 @@
   <link rel="stylesheet" href="./style.css">
 
 </head>
-<body onload="iniciar()">
-    <script  src="./script.js"></script>
-    <div>
-      <span>Idioma: </span><select onchange="cambioIdioma()" id="select-idiomas"></select><input type="text" id="fecha-hora-ahora">
+<body>
+  <div>
+    <span>Idioma: </span><select onchange="cambioIdioma()" id="select-idiomas"></select><input type="text" id="fecha-hora-ahora">
     </div>
     <div id="tabla-frutas">   
     </div>
@@ -25,7 +24,7 @@
     <div>
       <span>Kilos: </span><input type="text" id="kilos">
     </div>
-  
+    
     <div id="acciones">
       <div>
         <button onclick="insertar();">Insertar</button>
@@ -42,5 +41,7 @@
     </div>
     <div id="error">
     </div>
-</body>
-</html>
+    <script  src="./script.js"></script>
+  </body>
+  </html>
+  
