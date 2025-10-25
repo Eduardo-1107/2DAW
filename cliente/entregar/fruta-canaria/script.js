@@ -3,7 +3,14 @@ const frutas = [{id: 1, fruta: "Aguacate", codigoIslaProcedencia: "GO", precioKi
 ]
 const idiomas = [{codigo: "es", idioma: "Español"},{codigo: "en", idioma: "Inglés"}];
 const islas = [ {codigo: "GO", isla: "La Gomera"}, 
-                {codigo: "LP", isla: "La Palma"}]
+                {codigo: "LP", isla: "La Palma"},
+                {codigo: "TF", isla: "Tenerife"},
+                {codigo: "HI", isla: "El Hierro"},
+                {codigo: "GC", isla: "Gran Canaria"},
+                {codigo: "FU", isla: "Fuerteventura"},
+                {codigo: "LZ", isla: "Lanzarote"},
+                {codigo: "LG", isla: "La Graciosa"}
+              ]
 
 function insertar(){
   let fruta =document.getElementById("fruta").value;
@@ -18,9 +25,16 @@ function insertar(){
     nuevaFruta.codigoIslaProcedencia = codigoIsla;
     nuevaFruta.precioKiloEuros = precio;
     nuevaFruta.kilos = kilos;
-    frutas.push(nuevaFruta)
-    mostrarFrutas();
-    almacenarSet();
+    if(idInsertarDespues == "") {
+      frutas.push(nuevaFruta)
+      mostrarFrutas();
+      almacenarSet();
+    } else {
+      frutas.splice(idInsertarDespues,0,nuevaFruta)
+      mostrarFrutas();
+      almacenarSet();      
+    } 
+
   }
 }
 function validarDatos(fruta,codigoIsla,precio,kilos,idInsertarDespues){
@@ -29,7 +43,7 @@ function validarDatos(fruta,codigoIsla,precio,kilos,idInsertarDespues){
       throw new Error("Debe introducir un nombre de fruta");
     }
 
-    if (codigoIsla) {
+    if (!codigoIsla) {
       throw new Error("Debe introducir un código de isla válido");
     }
 
@@ -59,21 +73,23 @@ function iniciar(){
   cargarIdiomas()
   mostrarFrutas()
   cargarIslas()
+  mostrarFechaHora("es")
 }
 function mostrarFrutas(){
+  let idioma = document.getElementById("select-idiomas").value;
   let divFrutas = document.getElementById("tabla-frutas");
   let html = "<table>";
   html = html + "<tr>"+"<th>Id"+"</th>"+"<th>Fruta"+"</th>"+"<th>Isla"+"</th>"+"<th>Precio/kilo"+"</th>"+"<th>Kilos"+"</th>"+"<th>Importe"+"</th>"+"</tr>"
-  for (let i=0;i<frutas.length;i++){
+  frutas.forEach(fruta => {
     html = html + "<tr>"+
-                  "<td>"+frutas[i].id +"</td>" + 
-                  "<td>"+frutas[i].fruta +"</td>" + 
-                  "<td>"+obtenerIsla(frutas[i].codigoIslaProcedencia)+"</td>" + 
-                  "<td>"+frutas[i].precioKiloEuros + "</td>" +
-                  "<td>"+frutas[i].kilos + "</td>" +
-                  "<td>"+calcularImporte(frutas[i].precioKiloEuros, frutas[i].kilos) + "</td>" +
+                  "<td>"+fruta.id +"</td>" + 
+                  "<td>"+fruta.fruta +"</td>" + 
+                  "<td>"+obtenerIsla(fruta.codigoIslaProcedencia)+"</td>" + 
+                  "<td>"+fruta.precioKiloEuros + "</td>" +
+                  "<td>"+fruta.kilos + "</td>" +
+                  "<td>"+formatearImporte(calcularImporte(fruta.precioKiloEuros, fruta.kilos),idioma) + "</td>" +
                   "</tr>"
-  }
+  })
   html = html + "</table>"
   divFrutas.innerHTML = html;
 }
@@ -83,15 +99,17 @@ function almacenarSet(){
 }
 function cargarIdiomas(){
   let selectIdiomas = document.getElementById("select-idiomas");
-  let opciones;
-  for (let i=0;i<idiomas.length;i++){
-    opciones = opciones + '<option value="' + idiomas[i].codigo + '">' + idiomas[i].idioma +'</option>';
-  } 
+  let opciones = "";
+  idiomas.forEach(idioma => {
+    opciones += `<option value="${idioma.codigo}">${idioma.idioma}</option>`;
+  });
   selectIdiomas.innerHTML = opciones;
 }
 function cargarIslas(){
   let selectIslas = document.getElementById("islas");
-  selectIslas.innerHTML = '<option value="GO">La Gomera</option><option value="LP">La Palma</option>' 
+  let opciones = "";
+  islas.forEach(isla => opciones +=`<option value='${isla.codigo}'>${isla.isla}</option>`);
+  selectIslas.innerHTML = opciones;
 }
 function siguienteId() {
   let maxId = 0; 
@@ -103,21 +121,83 @@ function siguienteId() {
   return maxId + 1;
 }
 function obtenerIsla(codigoIsla){
-  if (codigoIsla=="LP")
-    return "La Palma"
-  if (codigoIsla=="GO")
-    return "La Gomera"
+  let islaCorrecta =""
+  islas.forEach(isla => {
+    if (isla.codigo === codigoIsla)
+      islaCorrecta = isla.isla
+  })
+  return islaCorrecta;
 }
 function calcularImporte(precioKilo, kilos){
   return precioKilo*kilos
 }
 function actualizar(){
-  alert("Función actualizar sin programar")
+  let fruta =document.getElementById("fruta").value;
+  let codigoIsla =document.getElementById("islas").value;
+  let precio =document.getElementById("precio").value;
+  let kilos =document.getElementById("kilos").value;
+  let idActualizar =parseInt(document.getElementById("id-actualizar").value) ;
+  let frutaAActualizar;
+  frutas.forEach(fruta => {
+    if (fruta.id === Number(idActualizar))
+      frutaAActualizar = fruta
+  })
+    if (!frutaAActualizar) {
+    alert(`No se encontró ninguna fruta con id ${idActualizar}`);
+    mostrarFrutas();
+    return;
+  }
+  if (validarDatos(fruta,codigoIsla,precio,kilos,idActualizar)){
+    frutaAActualizar.fruta = fruta;
+    frutaAActualizar.codigoIslaProcedencia = codigoIsla;
+    frutaAActualizar.precioKiloEuros = precio;
+    frutaAActualizar.kilos = kilos;
+    mostrarFrutas();
+    almacenarSet();
+  }
 }
 function borrar(){
-  alert("Función borrar sin programar")
+  let idBorrar = Number(document.getElementById("id-borrar").value);
+  let indiceAEliminar = -1;
+
+  frutas.forEach((fruta, i) => {
+    if (fruta.id === idBorrar) {
+      indiceAEliminar = i;
+    }
+  });
+  if (indiceAEliminar === -1) {
+    alert(`No se encontró ninguna fruta con id ${idBorrar}`);
+    return;
+  }
+  frutas.splice(indiceAEliminar, 1); 
+  mostrarFrutas();
+  almacenarSet();
 }
 function cambioIdioma(){
   let idioma = document.getElementById("select-idiomas").value;
   alert(idioma);
+  mostrarFechaHora(idioma);
+  mostrarFrutas();
+}
+function mostrarFechaHora(idioma) {
+  const inputFecha = document.getElementById("fecha-hora-ahora");
+
+  inputFecha.value = new Intl.DateTimeFormat(idioma, {
+  weekday: "narrow",
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit"
+  }).format(new Date());
+  
+}
+
+function formatearImporte(importe, idioma) {
+
+  return new Intl.NumberFormat(idioma, {
+    style: "currency",
+    currency: idioma === "en" ? "GBP" : "EUR"
+  }).format(importe);
 }
