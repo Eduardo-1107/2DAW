@@ -61,6 +61,7 @@ public class ClaseController {
     @GetMapping("/eliminar/{id}")
     public String eliminarClase(@PathVariable Integer id, Model model) {
         model.addAttribute("clase", claseService.getClaseById(id));
+        model.addAttribute("animales", animalService.getAnimales());
         return "clases/eliminar";
     }
     @PostMapping("/eliminar/{id}")

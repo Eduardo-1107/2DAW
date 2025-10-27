@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,16 +20,17 @@ public class Clase {
 
     @OneToMany(
             mappedBy = "clase",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Animal> animales;
+            cascade = CascadeType.ALL)
+    private List<Animal> animales = new ArrayList<>();
 
 
 
     public Clase() {}
 
-    public Clase(Integer id, String nombre) {
+    public Clase(Integer id, String nombre, List<Animal> animales) {
         setId(id);
         setNombre(nombre);
+        this.animales = animales;
     }
 
     public Clase(String nombre) {

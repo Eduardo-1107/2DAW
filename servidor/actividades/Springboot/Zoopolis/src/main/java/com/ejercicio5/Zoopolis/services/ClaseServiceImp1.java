@@ -1,6 +1,7 @@
 package com.ejercicio5.Zoopolis.services;
 
 import com.ejercicio5.Zoopolis.interfaces.IClaseService;
+import com.ejercicio5.Zoopolis.models.Animal;
 import com.ejercicio5.Zoopolis.models.Clase;
 
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ import java.util.List;
 
 public class ClaseServiceImp1 implements IClaseService {
     private int indexClase = 1;
-    private List<Clase> clases = new ArrayList<>(Arrays.asList(new Clase(1,"Mamifero"), new Clase(2,"Ave"), new Clase(3, "Reptil")));
-
+    private List<Animal> animales = new ArrayList<>();
+    private List<Clase> clases = new ArrayList<>(Arrays.asList(new Clase(1,"Mamifero", animales), new Clase(2,"Ave", animales), new Clase(3, "Reptil", animales)));
     public  List<Clase> getClases() {
         return clases;
     }
