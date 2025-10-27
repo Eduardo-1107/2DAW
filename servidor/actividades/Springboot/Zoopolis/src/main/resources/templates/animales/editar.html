@@ -27,6 +27,14 @@
                 <label class="form-check-label" for="esExtinto">¿Está extinto?</label>
                 <div class="text-danger mt-1" th:if="${#fields.hasErrors('esExtinto')}" th:errors="*{esExtinto}"></div>
             </div>
+            <div class="mb-3">
+                <label class="form-label" for="datalist-options">Clase</label>
+                <select class="form-select" id="datalist-options" th:field="*{clase}">
+                    <option th:each="clase : ${clases}"
+                            th:value="${clase.id}"
+                            th:text="${clase.nombre}"></option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-success btn-sm" value="Editar">Actualizar</button>
         </form>
         <a class="btn btn-secondary btn-sm my-3" th:href="@{/animales}" role="button">Volver a la lista</a>

@@ -17,6 +17,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Edad Media</th>
                         <th scope="col">Extinto</th>
+                        <th scope="col">Clase</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@
                         <td th:text="${animal.getNombre()}"></td>
                         <td th:text="${animal.getVidaMedia()}"></td>
                         <td th:text="${animal.getEsExtinto() ? 'Si' : 'No'}"></td>
+                        <td th:text="${animal.clase.nombre}"></td>
                         <td>
                             <a th:href="@{/animales/detalles/{id}(id = ${animal.getId()})}" class="btn btn-outline-success">Detalles</a>
                             <a th:href="@{/animales/editar/{id}(id = ${animal.getId()})}" class="btn btn-outline-warning">Editar</a>

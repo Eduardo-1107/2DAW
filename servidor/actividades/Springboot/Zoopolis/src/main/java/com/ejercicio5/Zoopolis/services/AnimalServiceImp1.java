@@ -2,6 +2,7 @@ package com.ejercicio5.Zoopolis.services;
 
 import com.ejercicio5.Zoopolis.interfaces.IAnimalService;
 import com.ejercicio5.Zoopolis.models.Animal;
+import com.ejercicio5.Zoopolis.models.Clase;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 public class AnimalServiceImp1 implements IAnimalService {
 
     private int indexAnimal = 1;
-    private List<Animal> animales = new ArrayList<>(Arrays.asList(new Animal(1,"Perro",21,false)));
+    private List<Animal> animales = new ArrayList<>(Arrays.asList(new Animal(1,"Perro",21,false, new Clase("Mamífero"))));
 
     public  List<Animal> getAnimales() {
         return animales;
@@ -38,6 +39,7 @@ public class AnimalServiceImp1 implements IAnimalService {
                 a.setNombre(animal.getNombre());
                 a.setVidaMedia(animal.getVidaMedia());
                 a.setEsExtinto(animal.getEsExtinto());
+                a.setClase(animal.getClase());
             }
         }
     }

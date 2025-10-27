@@ -28,16 +28,18 @@ public class Animal {
 
     public Animal() {};
 
-    public Animal(Integer id, String nombre, Integer vidaMedia, boolean esExtinto) {
+    public Animal(Integer id, String nombre, Integer vidaMedia, boolean esExtinto, Clase clase) {
         setId(id);
         setNombre(nombre);
         setVidaMedia(vidaMedia);
         setEsExtinto(esExtinto);
+        setClase(clase);
     }
-    public Animal(String nombre, Integer vidaMedia, boolean esExtinto) {
+    public Animal(String nombre, Integer vidaMedia, boolean esExtinto, Clase clase) {
         setNombre(nombre);
         setVidaMedia(vidaMedia);
         setEsExtinto(esExtinto);
+        setClase(clase);
     }
 
     public Integer getId() {
@@ -52,6 +54,9 @@ public class Animal {
     public boolean getEsExtinto() {
         return this.esExtinto;
     }
+    public Clase getClase() {
+        return clase;
+    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -65,18 +70,10 @@ public class Animal {
     public void setEsExtinto(boolean esExtinto) {
         this.esExtinto = esExtinto;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Animal animal = (Animal) o;
-        return esExtinto == animal.esExtinto && Objects.equals(id, animal.id) && Objects.equals(nombre, animal.nombre) && Objects.equals(vidaMedia, animal.vidaMedia);
+    public void setClase(Clase clase) {
+        this.clase = clase;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nombre, vidaMedia, esExtinto);
-    }
 }
 
 
