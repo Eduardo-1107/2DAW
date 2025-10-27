@@ -29,19 +29,21 @@
 
 # (ayuntamientos)
 
+``let municipios = JSON.parse(strMunicipios)``
+
 #### (1) Obtener una colección de objetos complejos, compuestos de todos los atributos, de los ayuntamientos con una población inferior a 2000 personas
 
-
+``municipios.filter(municipio => municipio.poblacion < 2000)``
 
 #### (2) Obtener una colección de objetos complejos, compuestos con los atributos municipio y población, de los ayuntamientos con una población inferior a 2000 personas
 
-
+``municipios.map(municipio => ({municipio: municipio.municipio, poblacion: municipio.poblacion})).filter(municipio => municipio.poblacion < 2000)``
 
 #### (3) ¿Cuál es la población total de la isla de La Palma?
 
-
+``municipios.filter(municipio => municipio.isla == 'La Palma').map(poblacion => poblacion.poblacion).reduce((ac, persona) => ac + persona, 0)``
 
 #### (4) Obtener una colección de objetos String con el formato "<municipio>, población: <poblacion>" de todos los ayuntamientos
 
 
-
+``municipios.map(municipio => `${municipio.municipio}, poblacion: ${municipio.poblacion}`)  ``
