@@ -1,130 +1,84 @@
-/* Plantilla de colores 
-    Crema claro	            Fondo principal	#FFF8E7
-    Beige suave	            Fondo secundario / tarjetas	#F5E6CA
-    Arena cálida	        Detalles o hover	#E6D0B1
-    Marrón claro	        Texto principal o títulos	#5A4634
-    Blanco roto	            Áreas de contraste / fondos interiores	#FAF9F6
-    Dorado suave (opcional)	Botones o detalles de lujo	#C6A664
-*/
-/* Fuentes  */
-
-.cinzel-decorative-regular {
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.cinzel-decorative-bold {
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.cinzel-decorative-black {
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 900;
-  font-style: normal;
-}
-.cinzel {
-  font-family: "Cinzel", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-.cormorant-garamond {
-  font-family: "Cormorant Garamond", serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
 /* Estilos generales */
-
-header, nav, main, aside {
+body {
     width: 90%;          
     margin: 0 auto;
-}
-
-body {
     display: grid;
-    font-family:"Cormorant Garamond", serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #FFF8E7 ;
     grid-template-areas: 
     "h h h h"
     "n n n n"
-    "a m m m"
+    "a a a a"
+    "m m m m"
     "f f f f"
     ;
 }
-a {
-    color: #C6A664;
-    text-decoration: none;
-}
-
-
 
 /* Estilo de del header */
 
 header {
     grid-area: h;
     display: flex;
-
+    border: 3px dotted rgb(141, 209, 232);
 }
-h1 {
+.titulo {
     padding: 10px;
     align-content: center;
     width: 100%;
     text-align: left;
-    color: #5a4634;
+    color: #5A4634;
+    font-size:xx-large;
     
 }
-
 
 /* Estilos del nav  */
 
 nav {
     grid-area:n;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 1em;
-    border: #5a463450 solid 1px;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: stretch; 
+    gap: 1em;
+    border: 3px dotted green;
     
 }
-nav > a {
+a {
     margin: 1em;
-
+    color: #C6A664;
+    text-decoration: none;
 }
 
 /* Estilos del main  */
 
 main {
     grid-area: m;
-
+    border: 3px dotted red;
 }
 .menu-rapido {
     display: flex;
-    justify-content: space-evenly;
-    margin: 1em 0;
-
+    flex-direction: column;
+    justify-content: center; 
+    align-items: stretch; 
+    gap: 1em;
+    border: 3px dotted rgb(0, 217, 255);
 }
 main > h2 {
-
+    border: 3px dotted rgb(71, 67, 20);
     margin: 0;
     
 }
-
 main > section {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 3px dotted rgb(255, 0, 153);
 }
 
 /* Estilos Articulos  */
 
 article {
     display:  grid;
+    border: 3px dotted rgb(0, 42, 255);
     margin: 1em;
 }
 
@@ -137,47 +91,69 @@ article > h3 {
     margin-bottom: 0;
 }
 
-
 /* Estilos del aside */
 
 aside {
     grid-area: a;
     order: -1;
+    border: 3px dotted purple;
 }
-aside a {
-    color: black;
-}
-aside ul {
-    list-style:lower-greek;
-}
-aside > ul > li {
-    margin-bottom: 1em;
-}
-aside > ul > li > ul > li  {
-    margin-bottom: 0.5em;
-}
+
 
 /* Estilos del footer */
 
 footer {
-    font-family: monospace  ;
-    background-color: #F5E6CA;
     grid-area: f;
+    border: 3px dotted orange;
+}
 
-}
-footer ul {
-    list-style: none;
-}
-footer li {
-    margin-top: 1em;
-}
 .footer-main {
     display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(3,10em);
-    
+    grid-template-columns: 1fr ;
+}
+
+footer > p {
+    text-align: center;
+}
+
+/* Media Queries */
+
+@media(min-width: 480px) {
+
+    main > section {
+        grid-template-columns: 1fr 1fr;
+    } 
+        
 
 }
-.footer-bottom {
-    text-align: center;
+@media(min-width: 640px) {
+
+    .footer-main {
+       grid-template-columns: 1fr 1fr 1fr;
+    } 
+    
+}
+@media(min-width: 800px) {
+
+    nav, .menu-rapido {
+        flex-direction: row;
+        align-items: center;
+    }
+    main > section {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media(min-width: 1024px) {
+
+    main > section {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }   
+    body {
+        grid-template-areas: 
+            "h h h h"
+            "n n n n"
+            "a m m m"
+            "f f f f"
+        ;
+    }
 }

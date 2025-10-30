@@ -1,0 +1,65 @@
+/* por defecto  */
+
+.container , .content {
+    padding: 1em;
+    border:solid 1px black;
+    border-radius: 10px;
+    margin: 1em;
+}
+nav li, aside li {
+    list-style: none;
+}
+header {
+    grid-area: header;
+    background-color: pink;
+}
+nav {
+    grid-area: nav;
+    background-color: lightgoldenrodyellow;
+}
+aside {
+    grid-area: aside;
+    background-color: rgb(197, 255, 197);
+}
+main {
+    grid-area: main;
+    background-color: rgb(202, 234, 253);
+}
+.content {
+    background-color: lightgray ;
+}
+footer {
+    grid-area: footer;
+    background-color: rgb(201, 163, 201);
+}
+.options-header {
+    font-weight: bold;
+}
+/* medias  */
+
+@media (min-width: 575px)  {
+   main div, footer  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   }
+   nav ul , aside ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+   }
+}
+@media (min-width: 992px) {
+    body > div {
+        display: grid;
+        grid-template-areas: 
+           "aside main main main"    
+        ;
+    }
+    aside ul{
+        display: block;
+        padding-left: 0;
+    }
+    main div  {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+   }
+}

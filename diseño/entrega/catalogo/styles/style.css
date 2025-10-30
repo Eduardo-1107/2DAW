@@ -62,7 +62,6 @@ main > h2 {
     
 }
 main > section {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -93,6 +92,7 @@ aside {
     order: -1;
     border: 3px dotted purple;
 }
+
 
 /* Estilos del footer */
 
