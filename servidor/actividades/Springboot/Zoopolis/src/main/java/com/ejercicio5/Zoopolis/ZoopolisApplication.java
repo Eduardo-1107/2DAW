@@ -24,7 +24,7 @@ public class ZoopolisApplication {
                 Clase c3 = new Clase("Reptil");
 
                 c1 = claseRepository.save(c1);
-                c2=   claseRepository.save(c2);
+                c2=  claseRepository.save(c2);
                 c3 =claseRepository.save(c3);
 
                 if (animalRepository.findAll().isEmpty()) {

@@ -25,7 +25,7 @@ public class AnimalController {
     @GetMapping("/crear")
     public String crearAnimal(Model model) {
         model.addAttribute("animal", new Animal());
-        model.addAttribute("clases", claseService.getClases())   ;
+        model.addAttribute("clases", claseService.getClases()) ;
         return "animales/crear";
     }
     @PostMapping("/crear")
