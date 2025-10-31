@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragmentos</title>
+</head>
+<body>
+<nav th:fragment="menu" class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Discografía</a>
+            <ul class="navbar-nav me-auto mb-2">
+                <li class="nav-item">
+                    <a th:href="@{/}" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/albums}" class="nav-link active">Discos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/artists}">Artistas</a>
+                </li>
+            </ul>
+            <a th:href="@{/login}" class="btn btn-primary d-flex">Login</a>
+        </div>
+</nav>
+</body>
+</html>

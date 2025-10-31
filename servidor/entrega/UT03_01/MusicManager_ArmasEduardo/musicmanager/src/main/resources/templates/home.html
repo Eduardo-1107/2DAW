@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <title>Mánager de Música</title>
+</head>
+<body>
+<div th:replace="~{/fragments/fragments :: menu}"></div>
+<div class="container">
+    <h2 class="my-5">La discografía</h2>
+    <div class="row justify-content-center">
+        <div class="col d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img th:src="@{/images/album.jpg}" class="card-img-top" alt="Albums">
+                <div class="card-body">
+                    <h5 class="card-title">Discos</h5>
+                    <p class="card-text">Consulta la colección de discos de nuestro catálogo.</p>
+                    <a th:href="@{/albums}" class="btn btn-primary">Ver Albums</a>
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img th:src="@{/images/artist.jpg}" class="card-img-top" alt="Artistas">
+                <div class="card-body">
+                    <h5 class="card-title">Artistas</h5>
+                    <p class="card-text">Conoce los artistas más punteros del panorama musical.</p>
+                    <a th:href="@{/artists}" class="btn btn-primary">Ver Artistas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
