@@ -14,10 +14,10 @@
         <a class="navbar-brand" th:href="@{/}">Zoopolis</a>
         <ul class="navbar-nav d-flex flex-row ms-3">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/animales}">Animales</a>
+                <a class="nav-link" th:href="@{/animales}" sec:authorize="isAuthenticated()">Animales</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/clases}">Clases</a>
+                <a class="nav-link" th:href="@{/clases}" sec:authorize="isAuthenticated()">Clases</a>
             </li>
         </ul>
 
