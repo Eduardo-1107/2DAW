@@ -2,8 +2,14 @@ package com.ejercicio5.Zoopolis;
 
 import com.ejercicio5.Zoopolis.models.Animal;
 import com.ejercicio5.Zoopolis.models.Clase;
+import com.ejercicio5.Zoopolis.models.Role;
+import com.ejercicio5.Zoopolis.models.User;
 import com.ejercicio5.Zoopolis.repositories.AnimalRepository;
 import com.ejercicio5.Zoopolis.repositories.ClaseRepository;
+import com.ejercicio5.Zoopolis.repositories.RoleRepository;
+import com.ejercicio5.Zoopolis.repositories.UserRepository;
+import com.ejercicio5.Zoopolis.services.RoleService;
+import com.ejercicio5.Zoopolis.services.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +22,7 @@ public class ZoopolisApplication {
 		SpringApplication.run(ZoopolisApplication.class, args);
 	}
     @Bean
-    CommandLineRunner seedDatabase(ClaseRepository claseRepository, AnimalRepository animalRepository) {
+    CommandLineRunner seedDatabase(ClaseRepository claseRepository, AnimalRepository animalRepository, RoleService roleService, UserService userService, RoleRepository roleRepository, UserRepository userRepository) {
         return args -> {
             if (claseRepository.findAll().isEmpty()) {
                 Clase c1 = new Clase("Mamífero");
@@ -35,6 +41,32 @@ public class ZoopolisApplication {
                     animalRepository.save(a2);
                     animalRepository.save(a3);
                 }
+            }
+
+            // Login
+            Role roleAdmin, roleUser;
+            User u1, u2;
+            if (roleRepository.findByName("ROLE_USER").isEmpty()) {
+                roleUser = new Role("ROLE_USER");
+                roleService.createRole(roleUser);
+            } else
+                roleUser = roleService.findByName("ROLE_USER");
+
+            if (roleRepository.findByName("ROLE_ADMIN").isEmpty()) {
+                roleAdmin = new Role("ROLE_ADMIN");
+                roleService.createRole(roleAdmin);
+            } else
+                roleAdmin = roleService.findByName("ROLE_ADMIN");
+
+
+            if (userRepository.findByEmail("Invitado@zoopolis.com").isEmpty()) {
+                u1 = new User("1234", "Invitado@zoopolis.com","Invitado Invitado", "Invitado");
+                userService.setUser(u1);
+            }
+            if (userRepository.findByEmail("Jefe@zoopolis.com").isEmpty()) {
+                u2 = new User("1234", "Jefe@zoopolis.com","Armas Dorta", "Eduardo");
+                u2.getRoles().add(roleAdmin);
+                userService.setUser(u2);
             }
         };
     }

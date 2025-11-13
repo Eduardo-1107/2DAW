@@ -38,7 +38,7 @@ public class AnimalServiceImp1 implements IAnimalService {
             if (a.getId().equals(animal.getId())) {
                 a.setNombre(animal.getNombre());
                 a.setVidaMedia(animal.getVidaMedia());
-                a.setEsExtinto(animal.getEsExtinto());
+                a.setEsExtinto(animal.isEsExtinto());
                 a.setClase(animal.getClase());
             }
         }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zoopolis - Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="col-md-4 mx-auto">
+        <div class="card shadow p-4">
+            <h1 class="text-center mb-4">Iniciar Sesión</h1>
+
+
+            <div th:if="${param.error}" class="alert alert-danger text-center">
+                Usuario o contraseña incorrectos.
+            </div>
+
+
+            <form th:action="@{/login}" method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="text" class="form-control" id="email" name="username" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <a class="btn btn-secondary btn-sm" th:href="@{/}" role="button">Volver</a>
+                    <button type="submit" class="btn btn-success btn-sm">Iniciar Sesión</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <p class="mb-1">¿No tienes cuenta?</p>
+                <a th:href="@{/register}" class="btn btn-link p-0">Regístrate aquí</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -2,11 +2,19 @@ package com.ejercicio5.Zoopolis.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Objects;
 
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,53 +34,13 @@ public class Animal {
     @ManyToOne
     private Clase clase;
 
-    public Animal() {};
-
-    public Animal(Integer id, String nombre, Integer vidaMedia, boolean esExtinto, Clase clase) {
-        setId(id);
-        setNombre(nombre);
-        setVidaMedia(vidaMedia);
-        setEsExtinto(esExtinto);
-        setClase(clase);
-    }
     public Animal(String nombre, Integer vidaMedia, boolean esExtinto, Clase clase) {
-        setNombre(nombre);
-        setVidaMedia(vidaMedia);
-        setEsExtinto(esExtinto);
-        setClase(clase);
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-    public String getNombre() {
-        return this.nombre;
-    }
-    public Integer getVidaMedia() {
-        return this.vidaMedia;
-    }
-    public boolean getEsExtinto() {
-        return this.esExtinto;
-    }
-    public Clase getClase() {
-        return clase;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public void setNombre(String nombre)  {
         this.nombre = nombre;
-    }
-    public void setVidaMedia(Integer vidaMedia)  {
         this.vidaMedia = vidaMedia;
-    }
-    public void setEsExtinto(boolean esExtinto) {
         this.esExtinto = esExtinto;
+        this.clase  = clase;
     }
-    public void setClase(Clase clase) {
-        this.clase = clase;
-    }
+
 
 }
 
